@@ -19,8 +19,9 @@ public class Calculator {
         return w / x;
     }
 
-    public int sumAllOperation() {
-       return sum(5) + minus(10) + multiply(5) + divide(20);
+    public int sumAllOperation(int e) {
+
+       return sum(e) + minus(e) + multiply(e) + divide(e);
     }
 
     public static void main(String[] args) {
@@ -29,7 +30,7 @@ public class Calculator {
         int rsl = calculator.multiply(5);
         int rsl2 = sum(5);
         int rsl3 = minus(10);
-        int rsl4 = calculator.sumAllOperation();
+        int rsl4 = calculator.sumAllOperation(20);
         System.out.println(rsl);
         System.out.println(rsl1);
         System.out.println(rsl2);
