@@ -10,8 +10,7 @@ public class Max {
     }
 
     public static int max(int left, int right, int average, int further) {
-        int tmp = max(average, further);
-        return max(left, right, tmp);
+        return max(left, right, max(average, further));
     }
 
     public static void main(String[] args) {
