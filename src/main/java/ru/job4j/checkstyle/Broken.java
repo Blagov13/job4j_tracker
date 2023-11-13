@@ -6,6 +6,10 @@ public class Broken {
     private String name;
     private static final String NEWVALUE = "";
 
+    public Broken() {
+
+    }
+
     public void method(int a, int b, int c, int d, int e, int f, int g) {
 
     }
