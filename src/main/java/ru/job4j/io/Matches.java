@@ -16,19 +16,12 @@ public class Matches {
                 if (count >= matches) {
                     count = count - matches;
                     System.out.println("Осталось" + count + "спичек");
-                    if (count != 0) {
-                        turn = !turn;
-                    } else {
-                        turn = true;
-                        break;
-                    }
+                }
+                turn = !turn;
                 } else {
                     System.out.println("Ошибка! Введите число от 1 до 3! Но не более остатка");
                 }
-            } else {
-                System.out.println("Ошибка! Введите число от 1 до 3! Но не более остатка");
             }
-        }
         if (!turn) {
             System.out.println("Выиграл первый игрок");
         } else {
