@@ -5,5 +5,10 @@ public interface Transport {
 
     void passengers(int passenger);
 
-    void fillUp(int fuel);
+    default int fillUp(int fuel) {
+        int price;
+        price = fuel * 60;
+        return price;
+    }
+
 }
