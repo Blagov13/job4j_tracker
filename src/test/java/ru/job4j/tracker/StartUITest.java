@@ -21,7 +21,7 @@ class StartUITest {
     @Test
     void whenReplaceItem() {
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("Replaced item")); /* Добавляется в tracker новая заявка */
+        Item item = tracker.add(new Item("Replaced item"));
         String replacedName = "New item name";
         Input in = new MockInput(
                 new String[] {"0", "1", "New item name", "1"}
