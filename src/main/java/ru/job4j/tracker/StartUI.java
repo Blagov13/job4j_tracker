@@ -5,7 +5,6 @@ public class StartUI {
         boolean run = true;
         while (run) {
             showMenu();
-            System.out.print("Выбрать: ");
             int select = input.askInt("Enter id: ");
             if (select == 0) {
                 createItem(input, tracker);
@@ -27,7 +26,6 @@ public class StartUI {
 
     public void findItemByName(Input input, Tracker tracker) {
         System.out.println("=== Вывод заявок по имени ===");
-        System.out.print("Введите имя: ");
         String name = input.askStr("Enter name: ");
         Item[] items = tracker.findByName(name);
         if (items.length > 0) {
@@ -41,7 +39,6 @@ public class StartUI {
 
     public void findItemById(Input input, Tracker tracker) {
         System.out.println("=== Вывод заявки по id ===");
-        System.out.print("Введите id: ");
         int id = input.askInt("Enter id: ");
         Item item = tracker.findById(id);
         if (item != null) {
@@ -53,7 +50,6 @@ public class StartUI {
 
     public void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Удаление заявки ===");
-        System.out.print("Введите id: ");
         int id = input.askInt("Enter id: ");
         Item item = tracker.findById(id);
         tracker.delete(id);
@@ -63,7 +59,6 @@ public class StartUI {
 
     public void replaceItem(Input input, Tracker tracker) {
         System.out.println("=== Редактирование заявки ===");
-        System.out.print("Введите id: ");
         int id = input.askInt("Enter id: ");
         System.out.print("Введите имя: ");
         String name = input.askStr("Enter name: ");
@@ -92,7 +87,6 @@ public class StartUI {
 
     public void findAllItems(Input input, Tracker tracker) {
         System.out.println("=== Создание новой заявки ===");
-        System.out.print("Введите имя: ");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
