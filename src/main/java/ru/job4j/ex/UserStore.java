@@ -7,9 +7,10 @@ public class UserStore {
             if (login.equals(user.getUsername())) {
                 temp = user;
                 break;
-            } else {
-                throw new UserNotFoundException("Item not found");
             }
+        }
+        if (temp == null) {
+            throw new UserNotFoundException("Item not found");
         }
         return temp;
     }
@@ -17,9 +18,9 @@ public class UserStore {
     public static boolean validate(User user) throws UserInvalidException {
         String username = user.getUsername();
         if (user.isValid() || username.length() < 3) {
-            return false;
+            throw new UserInvalidException("This user has an access");
         }
-        throw new UserInvalidException("This user has an access");
+        return true;
     }
 
     public static void main(String[] args) {
