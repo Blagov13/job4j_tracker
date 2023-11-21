@@ -3,6 +3,7 @@ package ru.job4j.early;
 public class PasswordValidator {
     private static final String[] FORBIDDEN = {"qwerty", "12345", "password", "admin", "user"};
 
+    @SuppressWarnings("checkstyle:SimplifyBooleanExpression")
     public static String validate(String password) {
         if (password == null) {
             throw new IllegalArgumentException("Password can't be null");
@@ -27,13 +28,14 @@ public class PasswordValidator {
             if (Character.isLowerCase(symbol)) {
                 hasLowCase = true;
             }
-
             if (Character.isDigit(symbol)) {
                 hasDigit = true;
             }
-
             if (!Character.isLetterOrDigit(symbol)) {
                 hasSpecial = true;
+            }
+            if (Character.isUpperCase(symbol) == Character.isLowerCase(symbol)
+                    == Character.isDigit(symbol) == (!Character.isLetterOrDigit(symbol))) {
                 break;
             }
         }
