@@ -26,7 +26,7 @@ public class ItemSorterTest {
                 new Item("Phone")
         );
         items.sort(new ItemAscByName());
-        assertThat(items.toString()).isEqualTo(expected.toString());
+        assertThat(items).isEqualTo(expected);
     }
 
     @Test
@@ -44,6 +44,6 @@ public class ItemSorterTest {
                 new Item("Alphabet")
         );
         items.sort(new ItemDescByName());
-        assertThat(items.toString()).isEqualTo(expected.toString());
+        assertThat(items).isEqualTo(expected);
     }
 }
