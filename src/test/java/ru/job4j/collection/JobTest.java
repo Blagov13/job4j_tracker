@@ -12,7 +12,7 @@ public class JobTest {
                 new Job("Fix bug", 0),
                 new Job("Fix bug", 1)
         );
-        assertThat(0).isLessThan(rsl);
+        assertThat(rsl).isGreaterThan(0);
     }
 
     @Test
