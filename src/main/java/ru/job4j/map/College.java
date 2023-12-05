@@ -29,7 +29,6 @@ public class College {
                     return Optional.of(s);
                 }
             }
-            return Optional.empty();
         }
         return Optional.empty();
     }
