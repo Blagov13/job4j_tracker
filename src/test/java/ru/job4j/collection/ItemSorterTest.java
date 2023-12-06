@@ -1,9 +1,9 @@
 package ru.job4j.collection;
 
 import org.junit.jupiter.api.Test;
-import ru.job4j.tracker.Item;
-import ru.job4j.tracker.ItemAscByName;
-import ru.job4j.tracker.ItemDescByName;
+import ru.job4j.tracker.item.Item;
+import ru.job4j.tracker.item.AscByName;
+import ru.job4j.tracker.item.DescByName;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,7 +25,7 @@ public class ItemSorterTest {
                 new Item("Milk"),
                 new Item("Phone")
         );
-        items.sort(new ItemAscByName());
+        items.sort(new AscByName());
         assertThat(items).isEqualTo(expected);
     }
 
@@ -43,7 +43,7 @@ public class ItemSorterTest {
                 new Item("Book"),
                 new Item("Alphabet")
         );
-        items.sort(new ItemDescByName());
+        items.sort(new DescByName());
         assertThat(items).isEqualTo(expected);
     }
 }
