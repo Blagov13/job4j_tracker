@@ -1,5 +1,7 @@
 package ru.job4j.tracker.item;
 
+import ru.job4j.tracker.Item;
+
 import java.util.Comparator;
 
 public class DescByName implements Comparator<Item> {

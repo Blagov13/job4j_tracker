@@ -2,13 +2,13 @@ package ru.job4j.tracker.action;
 
 import ru.job4j.tracker.*;
 import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.item.Item;
+import ru.job4j.tracker.Item;
 import ru.job4j.tracker.output.Output;
 
-public class FindById implements UserAction {
+public class FindByIdAction implements UserAction {
     private final Output out;
 
-    public FindById(Output out) {
+    public FindByIdAction(Output out) {
         this.out = out;
     }
 
@@ -18,10 +18,10 @@ public class FindById implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store memTracker) {
         out.println("=== Вывод заявки по id ===");
         int id = input.askInt("Enter id: ");
-        Item item = tracker.findById(id);
+        Item item = memTracker.findById(id);
         if (item != null) {
             out.println(item);
         } else {

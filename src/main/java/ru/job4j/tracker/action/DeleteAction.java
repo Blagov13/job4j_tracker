@@ -2,13 +2,13 @@ package ru.job4j.tracker.action;
 
 import ru.job4j.tracker.*;
 import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.item.Item;
+import ru.job4j.tracker.Item;
 import ru.job4j.tracker.output.Output;
 
-public class Delete implements UserAction {
+public class DeleteAction implements UserAction {
     private final Output out;
 
-    public Delete(Output out) {
+    public DeleteAction(Output out) {
         this.out = out;
     }
 
@@ -18,11 +18,11 @@ public class Delete implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, Store memTracker) {
         out.println("=== Удаление заявки ===");
         int id = input.askInt("Enter id: ");
-        Item item = tracker.findById(id);
-        tracker.delete(id);
+        Item item = memTracker.findById(id);
+        memTracker.delete(id);
         out.println(item != null ? "Заявка удалена успешно."
                 : "Ошибка удаления заявки.");
         return true;
