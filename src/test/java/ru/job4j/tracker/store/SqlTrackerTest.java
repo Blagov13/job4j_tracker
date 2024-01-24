@@ -92,6 +92,6 @@ public class SqlTrackerTest {
         SqlTracker tracker = new SqlTracker(connection);
         Item item = tracker.add(new Item("item"));
         tracker.add(new Item("itemNew"));
-        assertEquals(item, tracker.findById(item.getId()));
+        Assertions.assertEquals(item, tracker.findById(item.getId()));
     }
 }
