@@ -1,11 +1,9 @@
 package ru.job4j.tracker;
 
-import ru.job4j.tracker.item.Item;
-
 import java.util.List;
 
 public class Single {
-    private Tracker tracker = new Tracker();
+    private MemTracker memTracker = new MemTracker();
 
     private static Single instance = null;
 
@@ -20,26 +18,26 @@ public class Single {
     }
 
     public Item add(Item item) {
-        return tracker.add(item);
+        return memTracker.add(item);
     }
 
     public List<Item> findByName(String key) {
-        return tracker.findByName(key);
+        return memTracker.findByName(key);
     }
 
     public List<Item> findAll() {
-        return tracker.findAll();
+        return memTracker.findAll();
     }
 
     public Item findById(int id) {
-        return tracker.findById(id);
+        return memTracker.findById(id);
     }
 
     public boolean replace(int id, Item item) {
-        return tracker.replace(id, item);
+        return memTracker.replace(id, item);
     }
 
-    public boolean delete(int id) {
-        return tracker.delete(id);
+    public void delete(int id) {
+        memTracker.delete(id);
     }
 }
