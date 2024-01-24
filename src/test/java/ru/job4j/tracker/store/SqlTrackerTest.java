@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.Assert.assertEquals;
 
 public class SqlTrackerTest {
     private static Connection connection;
