@@ -1,7 +1,7 @@
 package ru.job4j.collection;
 
 import org.junit.jupiter.api.Test;
-import ru.job4j.tracker.item.Item;
+import ru.job4j.tracker.Item;
 import ru.job4j.tracker.item.AscByName;
 import ru.job4j.tracker.item.DescByName;
 
