@@ -4,10 +4,10 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Menu {
-    public static final Integer ADD_POST = 1;
-    public static final Integer ADD_MANY_POST = 2;
-    public static final Integer SHOW_ALL_POSTS = 3;
-    public static final Integer DELETE_POST = 4;
+    public static final int ADD_POST = 1;
+    public static final int ADD_MANY_POST = 2;
+    public static final int SHOW_ALL_POSTS = 3;
+    public static final int DELETE_POST = 4;
     public static final String ID_FOR_DELETE = "Все посты удалены";
 
     public static final String SELECT = "Выберите меню";
@@ -67,6 +67,6 @@ public class Menu {
                                    UserGenerator userGenerator, PostStore postStore, String text) {
         userGenerator.generate();
         commentGenerator.generate();
-        postStore.add(new Post(text, CommentGenerator.getComments()));
+        postStore.add(new Post(text, commentGenerator.getComments()));
     }
 }
