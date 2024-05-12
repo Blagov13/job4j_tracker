@@ -29,9 +29,9 @@ class FindByNameActionTest {
         findByNameAction.execute(input, tracker);
 
         String ln = System.lineSeparator();
-        String expected = "=== Вывод заявок по имени ===" + ln +
-                item1 + ln +
-                item2 + ln;
+        String expected = "=== Вывод заявок по имени ===" + ln
+                + item1 + ln
+                + item2 + ln;
         assertEquals(expected, output.toString());
     }
 }
