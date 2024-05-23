@@ -10,13 +10,10 @@ import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.output.Stub;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.mockito.ArgumentMatchers.anyString;
 
 class FindByNameActionTest {
     @Test
