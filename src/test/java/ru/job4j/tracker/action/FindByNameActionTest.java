@@ -18,10 +18,9 @@ import static org.mockito.Mockito.when;
 class FindByNameActionTest {
     @Test
     public void whenItemsFoundByName() {
-        LocalDateTime fixedDateTime = LocalDateTime.of(2022, 1, 1, 12, 0);
         Output output = new Stub();
         Store tracker = new SqlTracker();
-        Item item = tracker.add(new Item(1, "test3", fixedDateTime));
+        Item item = tracker.add(new Item(1, "test3", LocalDateTime.now()));
         Input input = mock(Input.class);
         FindByNameAction findByNameAction = new FindByNameAction(output);
         when(input.askStr(any(String.class))).thenReturn(item.getName());
@@ -30,6 +29,5 @@ class FindByNameActionTest {
         String expected = "=== Вывод заявок по имени ===" + ln
                 + item + ln;
         assertEquals(expected, output.toString());
-        tracker.delete(item.getId());
     }
 }

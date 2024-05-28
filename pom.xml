@@ -19,7 +19,7 @@
         <profile>
             <id>test</id>
             <properties>
-                <liquibase.config>liquibase_test.properties</liquibase.config>
+                <liquibase.config>src/main/resources/db/liquibase_test.properties</liquibase.config>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -34,12 +34,6 @@
     </profiles>
 
     <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
