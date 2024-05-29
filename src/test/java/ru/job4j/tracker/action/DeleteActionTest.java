@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.Item;
+import ru.job4j.tracker.MemTracker;
 import ru.job4j.tracker.SqlTracker;
 import ru.job4j.tracker.Store;
 import ru.job4j.tracker.input.Input;
@@ -18,7 +19,7 @@ class DeleteActionTest {
     @Test
     public void whenItemDeleted() {
         Output output = new Stub();
-        Store tracker = new SqlTracker();
+        Store tracker = new MemTracker();
         Item item = tracker.add(new Item("item"));
         DeleteAction deleteAction = new DeleteAction(output);
         Input input = mock(Input.class);
