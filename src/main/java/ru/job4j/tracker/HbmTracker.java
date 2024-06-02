@@ -17,17 +17,22 @@ public class HbmTracker implements Store, AutoCloseable {
     @Override
     public Item add(Item item) {
         Session session = sf.openSession();
-        session.beginTransaction();
-        session.save(item);
-        session.getTransaction().commit();
-        session.close();
+        try {
+            session.beginTransaction();
+            session.save(item);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return item;
     }
 
     @Override
     public boolean replace(int id, Item item) {
+        Session session = sf.openSession();
         try {
-            Session session = sf.openSession();
             session.beginTransaction();
             session.createQuery("UPDATE Item SET name = :fName WHERE id = :fId")
                     .setParameter("fName", "new name")
@@ -36,14 +41,17 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
+        return false;
     }
 
     @Override
     public void delete(int id) {
+        Session session = sf.openSession();
         try {
-            Session session = sf.openSession();
             session.beginTransaction();
             session.createQuery(
                             "DELETE Item WHERE id = :fId")
@@ -51,39 +59,59 @@ public class HbmTracker implements Store, AutoCloseable {
                     .executeUpdate();
             session.getTransaction().commit();
         } catch (Exception e) {
-            throw new RuntimeException();
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
     }
 
     @Override
     public List<Item> findAll() {
         Session session = sf.openSession();
-        session.beginTransaction();
-        List<Item> result = session.createQuery("from Item", Item.class).list();
-        session.getTransaction().commit();
-        session.close();
+        List<Item> result = null;
+        try {
+            session.beginTransaction();
+            result = session.createQuery("from Item", Item.class).list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return result;
     }
 
     @Override
     public List<Item> findByName(String key) {
         Session session = sf.openSession();
-        session.beginTransaction();
-        List<Item> query = session.createQuery(
-                        "from Item as i where i.name = :fKey", Item.class)
-                .setParameter("fKey", key).list();
-        session.getTransaction().commit();
-        session.close();
+        List<Item> query = null;
+        try {
+            session.beginTransaction();
+            query = session.createQuery(
+                            "from Item as i where i.name = :fKey", Item.class)
+                    .setParameter("fKey", key).list();
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return query;
     }
 
     @Override
     public Item findById(int id) {
         Session session = sf.openSession();
-        session.beginTransaction();
-        Item result = session.get(Item.class, id);
-        session.getTransaction().commit();
-        session.close();
+        Item result = null;
+        try {
+            session.beginTransaction();
+            result = session.get(Item.class, id);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
         return result;
     }
 
